@@ -45,7 +45,7 @@ $dmplBuilder->penUp()
 return $dmplBuilder->compileDmpl();
 ```
 
-Sending the generated DM/PL instructions to you plotter through USB can be done like so:
+Sending the generated DM/PL instructions to your plotter through USB can be done like so:
 
 ``` php
 echo ';: ECM,U H L0,P0;V10;BP50;A100,100,R,U,200,200,-200,-200,D,0,1400,1900,0,0,-1400,-1900,0,U,200,200,e' > /dev/usb/lp0
