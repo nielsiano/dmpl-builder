@@ -90,6 +90,7 @@ If you discover any security related issues, please email nielsstampe@gmail.com 
 ## Credits
 
 - [Niels Stampe][link-author]
+- [Audio Visionary Music][https://github.com/audiovisionarymusic]
 - [All Contributors][link-contributors]
 
 ## License
