@@ -25,6 +25,8 @@ The following versions of PHP are supported by this version.
 
 ## Usage
 
+DmplBuilder has a fluent interface which makes it easier to chain lots of instructions.
+
 ``` php
 $dmplBuilder = new Nielsiano\DmplBuilder();
 
