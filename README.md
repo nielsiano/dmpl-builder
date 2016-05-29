@@ -3,6 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/5b43e0cf-50d0-4a93-ac7a-395b2e214c52.svg?style=flat-square)](https://insight.sensiolabs.com/projects/5b43e0cf-50d0-4a93-ac7a-395b2e214c52)
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
