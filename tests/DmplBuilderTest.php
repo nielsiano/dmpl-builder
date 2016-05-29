@@ -86,4 +86,10 @@ class DmplBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(';: ECM,U H L0,P0;V10;BP50;A100,100,R,;:c,e', $this->builder->cutOff()->compileDmpl());
     }
 
+    public function test_it_will_throw_exception_when_invalid_pen_is_chosen()
+    {
+        $this->setExpectedException(\InvalidArgumentException::class, '[1337] is not a valid Pen.');
+        $this->builder->changePen(1337);
+    }
+
 }
