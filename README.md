@@ -91,6 +91,7 @@ If you discover any security related issues, please email nielsstampe@gmail.com 
 ## Credits
 
 - [Niels Stampe][link-author]
+- [Christian Rishøj](https://github.com/crishoj)
 - [Audio Visionary Music](https://github.com/audiovisionarymusic)
 - [All Contributors][link-contributors]
 
