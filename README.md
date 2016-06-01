@@ -8,7 +8,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-DmplBuilder eases the process of creating DM/PL command instructions used for pen plotters and cutters.
+DmplBuilder eases the process of creating DM/PL command instructions used for hardware pen plotters and cutters. Read more about the specific commands in this [very modern manual](https://www.summa.be/download/dmp-40v.pdf) by Summa.
 
 ## Install
 
@@ -26,48 +26,49 @@ The following versions of PHP are supported by this version.
 
 ## Usage
 
-DmplBuilder has a fluent interface which makes it easier to chain lots of instructions.
+DmplBuilder has a fluent interface which hopefully makes it more enjoyable to work it.
 
 ``` php
-$dmplBuilder = new Nielsiano\DmplBuilder();
+$builder = new Nielsiano\DmplBuilder();
 
-$dmplBuilder->penUp()
-            ->plot(200, 200)
-            ->penDown()
-            ->velocity(100)
-            ->flexCut()
-            ->plot(0, 1400)
-            ->plot(1900, 0)
-            ->plot(0, -1400)
-            ->plot(-1900, 0)
-            ->penUp()
-            ->cutOff();
+$builder->penUp()
+        ->plot(200, 200)
+        ->penDown()
+        ->velocity(100)
+        ->flexCut()
+        ->plot(0, 1400)
+        ->plot(1900, 0)
+        ->plot(0, -1400)
+        ->plot(-1900, 0)
+        ->penUp()
+        ->cutOff();
 
-return $dmplBuilder->compileDmpl();
+return $builder->compileDmpl();
 ```
 
 Sending the generated DM/PL instructions to your plotter through USB can be done like so:
 
 ``` php
-echo ';: ECM,U H L0,P0;V10;BP50;A100,100,R,U,200,200,-200,-200,D,0,1400,1900,0,0,-1400,-1900,0,U,200,200,e' > /dev/usb/lp0
+echo ';: ECM,U H L0,P0;A100,100,V10;BP50;D,0,1400,1900,0,e' > /dev/usb/lp0
 ```
 
-Available methods include:
+Available methods at the moment:
 
 ``` php
-    $dmplBuilder->penUp()
-    $dmplBuilder->cutOff()
-    $dmplBuilder->penDown()
-    $dmplBuilder->flexCut()
-    $dmplBuilder->flipAxes()
-    $dmplBuilder->regularCut()
-    $dmplBuilder->changePen(int $pen)
-    $dmplBuilder->plot(int $x, int $y)
-    $dmplBuilder->compileDmpl(): string
-    $dmplBuilder->velocity(int $velocity)
-    $dmplBuilder->pressure(int $gramPressure)
-    $dmplBuilder->pushCommand(string $command)
-    $dmplBuilder->pushCommand(string $command)
+    $builder->penUp()
+    $builder->cutOff()
+    $builder->penDown()
+    $builder->flexCut()
+    $builder->flipAxes()
+    $builder->regularCut()
+    $builder->changePen(int $pen)
+    $builder->plot(int $x, int $y)
+    $builder->compileDmpl(): string
+    $builder->setMeasuringUnit($unit)
+    $builder->velocity(int $velocity)
+    $builder->pressure(int $gramPressure)
+    $builder->pushCommand(string $command)
+    $builder->pushCommand(string $command)
 ```
 
 ## Change log
