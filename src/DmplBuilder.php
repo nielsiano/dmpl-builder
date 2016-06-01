@@ -15,24 +15,27 @@ class DmplBuilder
      *
      * @var array
      */
-    private $instructions = [];
-
-    /**
-     * @var bool
-     */
-    private $flipAxes = false;
+    protected $instructions = [];
 
     /**
      * @var bool
      */
     protected $cutOff = false;
 
-    const VELOCITY = 10;
+    /**
+     * @var bool
+     */
+    protected $flipAxes = false;
+
+    /**
+     * @var mixed
+     */
+    protected $measuringUnit = 'M';
+
     const KISS_CUT = 50;
     const FLEXCUT_PEN = 6;
     const REGULAR_PEN = 0;
     const CUT_THROUGH = 100;
-    const MEASUREMENT_UNIT = 'M';
 
     /**
      * Adds a new plot of x and y to machine instructions.
@@ -70,12 +73,7 @@ class DmplBuilder
      */
     public function compileDmpl(): string
     {
-        $init = sprintf(
-            ';: EC%s,U H L0,P0;V%d;BP%d;A100,100,R,',
-            self::MEASUREMENT_UNIT,
-            self::VELOCITY,
-            self::KISS_CUT
-        );
+        $init = sprintf(';: EC%s,U H L0,P0;A100,100,R,', $this->measuringUnit);
 
         $this->pushCommand($this->cutOff ? ';:c,e' : 'e');
 
@@ -144,6 +142,22 @@ class DmplBuilder
     public function pressure(int $gramPressure)
     {
         return $this->pushCommand(sprintf('BP%d;', $gramPressure));
+    }
+
+    /**
+     * Specifies measuring unit.
+     * 1 selects 0.001 inch
+     * 5 selects 0.005 inch
+     * M selects 0.1 mm
+     *
+     * @param $unit
+     * @return $this
+     */
+    public function setMeasuringUnit($unit)
+    {
+        $this->measuringUnit = $unit;
+
+        return $this;
     }
 
     /**
