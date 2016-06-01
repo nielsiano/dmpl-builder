@@ -55,20 +55,20 @@ echo ';: ECM,U H L0,P0;A100,100,V10;BP50;D,0,1400,1900,0,e' > /dev/usb/lp0
 Available methods at the moment:
 
 ``` php
-    $builder->penUp()
-    $builder->cutOff()
-    $builder->penDown()
-    $builder->flexCut()
-    $builder->flipAxes()
-    $builder->regularCut()
-    $builder->changePen(int $pen)
-    $builder->plot(int $x, int $y)
-    $builder->compileDmpl(): string
-    $builder->setMeasuringUnit($unit)
-    $builder->velocity(int $velocity)
-    $builder->pressure(int $gramPressure)
-    $builder->pushCommand(string $command)
-    $builder->pushCommand(string $command)
+$builder->penUp()
+$builder->cutOff()
+$builder->penDown()
+$builder->flexCut()
+$builder->flipAxes()
+$builder->regularCut()
+$builder->changePen(int $pen)
+$builder->plot(int $x, int $y)
+$builder->compileDmpl(): string
+$builder->setMeasuringUnit($unit)
+$builder->velocity(int $velocity)
+$builder->pressure(int $gramPressure)
+$builder->pushCommand(string $command)
+$builder->pushCommand(string $command)
 ```
 
 ## Change log
