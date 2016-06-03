@@ -3,12 +3,19 @@ language: php
 php:
   - 7.0
 
-before_script:
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_install:
   - travis_retry composer self-update
-  - travis_retry composer install --prefer-source --no-interaction --dev
+
+install:
+  - travis_retry composer update --no-interaction --prefer-source
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_script:
-  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover

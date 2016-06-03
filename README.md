@@ -26,7 +26,7 @@ The following versions of PHP are supported by this version.
 
 ## Usage
 
-DmplBuilder has a fluent interface which hopefully makes it more enjoyable to work it.
+DmplBuilder uses a fluent interface to chain all commands and plots before compiling the final instructions.
 
 ``` php
 $builder = new Nielsiano\DmplBuilder();
@@ -67,7 +67,6 @@ $builder->compileDmpl(): string
 $builder->setMeasuringUnit($unit)
 $builder->velocity(int $velocity)
 $builder->pressure(int $gramPressure)
-$builder->pushCommand(string $command)
 $builder->pushCommand(string $command)
 ```
 
