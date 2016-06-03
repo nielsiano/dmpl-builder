@@ -73,7 +73,7 @@ class DmplBuilder
      */
     public function compileDmpl(): string
     {
-        $init = sprintf(';: EC%s,U H L0,P0;A100,100,R,', $this->measuringUnit);
+        $init = sprintf(';: EC%s,U H L0,A100,100,R,', $this->measuringUnit);
 
         $this->pushCommand($this->cutOff ? ';:c,e' : 'e');
 
@@ -155,6 +155,10 @@ class DmplBuilder
      */
     public function setMeasuringUnit($unit)
     {
+        if (! in_array($unit, [1, 2, 3, 4, 5, 'M'])) {
+            throw new \InvalidArgumentException(sprintf('[%s] is not a valid measuring unit.', $unit));
+        }
+
         $this->measuringUnit = $unit;
 
         return $this;
