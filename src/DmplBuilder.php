@@ -18,7 +18,6 @@ namespace Nielsiano\DmplBuilder;
 class DmplBuilder
 {
 
-    const MEASURING_UNITS = [1, 2, 3, 4, 5, 'M'];
 
     /**
      * Generated DM/PL command instructions.
@@ -46,6 +45,7 @@ class DmplBuilder
     const FLEXCUT_PEN = 6;
     const REGULAR_PEN = 0;
     const CUT_THROUGH = 100;
+    const MEASURING_UNITS = [1, 2, 3, 4, 5, 'M'];
 
     /**
      * Adds a new plot of x and y to machine instructions.
