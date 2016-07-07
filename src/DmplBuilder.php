@@ -18,6 +18,8 @@ namespace Nielsiano\DmplBuilder;
 class DmplBuilder
 {
 
+    const MEASURING_UNITS = [1, 2, 3, 4, 5, 'M'];
+
     /**
      * Generated DM/PL command instructions.
      *
@@ -163,7 +165,7 @@ class DmplBuilder
      */
     public function setMeasuringUnit($unit)
     {
-        if (! in_array($unit, [1, 2, 3, 4, 5, 'M'])) {
+        if (! in_array($unit, self::MEASURING_UNITS)) {
             throw new \InvalidArgumentException(sprintf('[%s] is not a valid measuring unit.', $unit));
         }
 
