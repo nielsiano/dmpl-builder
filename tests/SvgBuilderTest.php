@@ -54,4 +54,19 @@ class SvgBuilderTest extends \PHPUnit_Framework_TestCase
             $this->builder->compile());
     }
 
+    public function test_it_can_determine_extent_of_drawing()
+    {
+        $this->builder
+            ->plot(100, 200);
+
+        $this->assertContains('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="200"',
+            $this->builder->compile());
+
+        $this->builder
+            ->plot(50, 50);
+
+        $this->assertContains('<svg xmlns="http://www.w3.org/2000/svg" width="150" height="250"',
+            $this->builder->compile());
+    }
+
 }

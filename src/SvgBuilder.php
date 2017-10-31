@@ -13,6 +13,12 @@ class SvgBuilder implements PlotBuilder
     protected $x = 0;
     protected $y = 0;
 
+    /**
+     * Extent of drawing
+     */
+    protected $maxX = 0;
+    protected $maxY = 0;
+
     protected $instructions = [];
 
     protected $axesFlipped = false;
@@ -31,6 +37,9 @@ class SvgBuilder implements PlotBuilder
 
         $targetX = $this->x + $x;
         $targetY = $this->y + $y;
+
+        $this->maxX = max($this->maxX, $targetX);
+        $this->maxY = max($this->maxY, $targetY);
 
         if ($this->penIsDown) {
             $this->pushInstruction('line', [
@@ -64,7 +73,7 @@ class SvgBuilder implements PlotBuilder
         $instructions = implode("\n", $this->instructions);
 
         return <<<SVG
-<svg xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="{$this->maxX}" height="{$this->maxY}">
     <defs>
         <style>
             line.regular {
