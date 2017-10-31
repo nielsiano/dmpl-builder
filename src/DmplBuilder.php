@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Nielsiano\DmplBuilder;
 
 /**
@@ -15,9 +16,8 @@ namespace Nielsiano\DmplBuilder;
  *
  * @package Nielsiano\DmplBuilder
  */
-class DmplBuilder
+class DmplBuilder implements PlotBuilder
 {
-
 
     /**
      * Generated DM/PL command instructions.
