@@ -2,6 +2,8 @@
 
 namespace Nielsiano\DmplBuilder;
 
+use Exception;
+
 /**
  * Illustrate a plot program visually as an SVG line drawing.
  */
@@ -24,6 +26,8 @@ class SvgBuilder implements PlotBuilder
     protected $axesFlipped = false;
     protected $penIsDown = true;
     protected $tool = 'regular';
+    protected $unit = 'mm';
+    protected $scale = 0.1;
 
     /**
      * Adds a new plot of x and y to machine instructions.
@@ -72,8 +76,11 @@ class SvgBuilder implements PlotBuilder
     {
         $instructions = implode("\n", $this->instructions);
 
+        $width = ($this->maxX * $this->scale) . $this->unit;
+        $height = ($this->maxY * $this->scale) . $this->unit;
+
         return <<<SVG
-<svg xmlns="http://www.w3.org/2000/svg" width="{$this->maxX}" height="{$this->maxY}">
+<svg xmlns="http://www.w3.org/2000/svg" width="{$width}" height="{$height}">
     <defs>
         <style>
             line.regular {
@@ -157,7 +164,24 @@ SVG;
      */
     public function setMeasuringUnit($unit): PlotBuilder
     {
-        // TODO: Implement setMeasuringUnit() method.
+        switch ($unit) {
+            case 'M':
+                $this->unit = 'mm';
+                $this->scale = 0.1;
+                break;
+            case 1:
+                $this->unit = 'in';
+                $this->scale = 0.001;
+                break;
+            case 5:
+                $this->unit = 'in';
+                $this->scale = 0.005;
+                break;
+            default:
+                throw new Exception('Unhandled unit: ' . $unit);
+        }
+
+        return $this;
     }
 
     /**
