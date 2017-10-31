@@ -82,6 +82,14 @@ class DmplBuilder implements PlotBuilder
     }
 
     /**
+     * Alias for `compile()` (for backwards compatibility).
+     */
+    public function compileDmpl(): string
+    {
+        return $this->compile();
+    }
+
+    /**
      * Pushes a command to the instructions.
      */
     public function pushCommand(string $command): PlotBuilder
