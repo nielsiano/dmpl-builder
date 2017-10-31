@@ -23,11 +23,11 @@ interface PlotBuilder
     public function changePen(int $pen);
 
     /**
-     * Compiles a string in DMPL format with machine instructions.
+     * Compiles a string in target format with machine instructions.
      *
      * @return string
      */
-    public function compileDmpl(): string;
+    public function compile(): string;
 
     /**
      * Pushes a command to the instructions.

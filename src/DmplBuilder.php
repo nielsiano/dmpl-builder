@@ -81,7 +81,7 @@ class DmplBuilder implements PlotBuilder
      *
      * @return string
      */
-    public function compileDmpl(): string
+    public function compile(): string
     {
         $init = sprintf(';: EC%s,U H L0,A100,100,R,', $this->measuringUnit);
 
