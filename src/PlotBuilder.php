@@ -7,102 +7,69 @@ interface PlotBuilder
 {
     /**
      * Adds a new plot of x and y to machine instructions.
-     *
-     * @param int $x
-     * @param int $y
-     * @return $this
      */
-    public function plot(int $x, int $y);
+    public function plot(int $x, int $y): PlotBuilder;
 
     /**
      * Changes the pen of the plotter.
-     *
-     * @param int $pen
-     * @return $this
      */
-    public function changePen(int $pen);
+    public function changePen(int $pen): PlotBuilder;
 
     /**
      * Compiles a string in target format with machine instructions.
-     *
-     * @return string
      */
     public function compile(): string;
 
     /**
      * Pushes a command to the instructions.
-     *
-     * @param string $command
-     * @return $this
      */
-    public function pushCommand(string $command);
+    public function pushCommand(string $command): PlotBuilder;
 
     /**
      * Lifts the pen up.
-     *
-     * @return $this
      */
-    public function penUp();
+    public function penUp(): PlotBuilder;
 
     /**
      * Pushes the pen down on paper.
-     *
-     * @return $this
      */
-    public function penDown();
+    public function penDown(): PlotBuilder;
 
     /**
      * Changes the plotter pen to use flexcut.
-     *
-     * @return $this
      */
-    public function flexCut();
+    public function flexCut(): PlotBuilder;
 
     /**
      * Change to the regular plotter pen.
-     *
-     * @return $this
      */
-    public function regularCut();
+    public function regularCut(): PlotBuilder;
 
     /**
      * Changes the pen pressure in gram.
-     *
-     * @param int $gramPressure
-     * @return $this
      */
-    public function pressure(int $gramPressure);
+    public function pressure(int $gramPressure): PlotBuilder;
 
     /**
      * Specifies measuring unit.
      * 1 selects 0.001 inch
      * 5 selects 0.005 inch
      * M selects 0.1 mm
-     *
-     * @param $unit
-     * @return $this
      */
-    public function setMeasuringUnit($unit);
+    public function setMeasuringUnit($unit): PlotBuilder;
 
     /**
      * Changes the plotter velocity.
-     *
-     * @param int $velocity
-     * @return $this
      */
-    public function velocity(int $velocity);
+    public function velocity(int $velocity): PlotBuilder;
 
     /**
      * Flips the x, y coordinates.
-     *
-     * @return $this
      */
-    public function flipAxes();
+    public function flipAxes(): PlotBuilder;
 
     /**
      * Cuts off paper when a operation finishes.
-     *
-     * @return $this
      */
-    public function cutOff();
+    public function cutOff(): PlotBuilder;
 }
