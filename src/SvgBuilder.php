@@ -80,18 +80,18 @@ class SvgBuilder implements PlotBuilder
         $height = ($this->maxY * $this->scale) . $this->unit;
 
         return <<<SVG
-<svg xmlns="http://www.w3.org/2000/svg" width="{$width}" height="{$height}">
+<svg xmlns="http://www.w3.org/2000/svg" width="{$width}" height="{$height}" viewBox="0 0 {$this->maxX} {$this->maxY}">
     <defs>
         <style>
             line.regular {
-                stroke: rgb(255,0,0);
-                stroke-width: 2;
+                stroke: rgb(0,0,255);
+                stroke-width: 4;
             }
 
             line.flex {
                 stroke: rgb(255,0,0);
-                stroke-width: 2;
-                stroke-dasharray: 10 2;
+                stroke-width: 4;
+                stroke-dasharray: 20 4;
             }
         </style>
     </defs>
@@ -220,4 +220,5 @@ SVG;
 
         return $this;
     }
+
 }
