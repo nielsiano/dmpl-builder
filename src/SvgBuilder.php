@@ -29,6 +29,11 @@ class SvgBuilder implements PlotBuilder
     protected $unit = 'mm';
     protected $scale = 0.1;
 
+    const TOOLS = [
+        0 => 'regular',
+        6 => 'flex',
+    ];
+
     /**
      * Adds a new plot of x and y to machine instructions.
      */
@@ -66,6 +71,8 @@ class SvgBuilder implements PlotBuilder
      */
     public function changePen(int $pen): PlotBuilder
     {
+        $this->tool = self::TOOLS[$pen];
+
         return $this;
     }
 
@@ -135,9 +142,7 @@ SVG;
      */
     public function flexCut(): PlotBuilder
     {
-        $this->tool = 'flex';
-
-        return $this;
+        return $this->changePen(6);
     }
 
     /**
@@ -145,9 +150,7 @@ SVG;
      */
     public function regularCut(): PlotBuilder
     {
-        $this->tool = 'regular';
-
-        return $this;
+        return $this->changePen(0);
     }
 
     /**
