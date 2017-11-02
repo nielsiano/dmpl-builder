@@ -165,6 +165,8 @@ SVG;
      * 1 selects 0.001 inch
      * 5 selects 0.005 inch
      * M selects 0.1 mm
+     *
+     * @throws Exception
      */
     public function setMeasuringUnit($unit): PlotBuilder
     {
