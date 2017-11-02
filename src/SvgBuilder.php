@@ -66,7 +66,7 @@ class SvgBuilder implements PlotBuilder
      */
     public function changePen(int $pen): PlotBuilder
     {
-        // TODO: Implement changePen() method.
+        return $this;
     }
 
     /**
@@ -102,10 +102,12 @@ SVG;
 
     /**
      * Pushes a command to the instructions.
+     *
+     * No effect in the SVG output.
      */
     public function pushCommand(string $command): PlotBuilder
     {
-        // TODO: Implement pushCommand() method.
+        return $this;
     }
 
     /**
@@ -150,10 +152,12 @@ SVG;
 
     /**
      * Changes the pen pressure in gram.
+     *
+     * No effect in the SVG output.
      */
     public function pressure(int $gramPressure): PlotBuilder
     {
-        // TODO: Simulate pressure with stroke width, perhaps?
+        return $this;
     }
 
     /**
@@ -186,10 +190,12 @@ SVG;
 
     /**
      * Changes the plotter velocity.
+     *
+     * No effect in the SVG output.
      */
     public function velocity(int $velocity): PlotBuilder
     {
-        // TODO: Implement velocity() method.
+        return $this;
     }
 
     /**
@@ -204,10 +210,12 @@ SVG;
 
     /**
      * Cuts off paper when a operation finishes.
+     *
+     * No effect in the SVG output.
      */
     public function cutOff(): PlotBuilder
     {
-        // TODO: Implement cutOff() method.
+        return $this;
     }
 
     protected function pushInstruction(string $name, array $parameters): PlotBuilder
