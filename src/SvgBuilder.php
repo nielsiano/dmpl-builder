@@ -29,6 +29,11 @@ class SvgBuilder implements PlotBuilder
     protected $unit = 'mm';
     protected $scale = 0.1;
 
+    const TOOLS = [
+        0 => 'regular',
+        6 => 'flex',
+    ];
+
     /**
      * Adds a new plot of x and y to machine instructions.
      */
@@ -66,7 +71,9 @@ class SvgBuilder implements PlotBuilder
      */
     public function changePen(int $pen): PlotBuilder
     {
-        // TODO: Implement changePen() method.
+        $this->tool = self::TOOLS[$pen];
+
+        return $this;
     }
 
     /**
@@ -102,10 +109,12 @@ SVG;
 
     /**
      * Pushes a command to the instructions.
+     *
+     * No effect in the SVG output.
      */
     public function pushCommand(string $command): PlotBuilder
     {
-        // TODO: Implement pushCommand() method.
+        return $this;
     }
 
     /**
@@ -133,9 +142,7 @@ SVG;
      */
     public function flexCut(): PlotBuilder
     {
-        $this->tool = 'flex';
-
-        return $this;
+        return $this->changePen(6);
     }
 
     /**
@@ -143,17 +150,17 @@ SVG;
      */
     public function regularCut(): PlotBuilder
     {
-        $this->tool = 'regular';
-
-        return $this;
+        return $this->changePen(0);
     }
 
     /**
      * Changes the pen pressure in gram.
+     *
+     * No effect in the SVG output.
      */
     public function pressure(int $gramPressure): PlotBuilder
     {
-        // TODO: Simulate pressure with stroke width, perhaps?
+        return $this;
     }
 
     /**
@@ -161,6 +168,8 @@ SVG;
      * 1 selects 0.001 inch
      * 5 selects 0.005 inch
      * M selects 0.1 mm
+     *
+     * @throws Exception
      */
     public function setMeasuringUnit($unit): PlotBuilder
     {
@@ -186,10 +195,12 @@ SVG;
 
     /**
      * Changes the plotter velocity.
+     *
+     * No effect in the SVG output.
      */
     public function velocity(int $velocity): PlotBuilder
     {
-        // TODO: Implement velocity() method.
+        return $this;
     }
 
     /**
@@ -204,10 +215,12 @@ SVG;
 
     /**
      * Cuts off paper when a operation finishes.
+     *
+     * No effect in the SVG output.
      */
     public function cutOff(): PlotBuilder
     {
-        // TODO: Implement cutOff() method.
+        return $this;
     }
 
     protected function pushInstruction(string $name, array $parameters): PlotBuilder

@@ -70,4 +70,12 @@ class SvgBuilderTest extends \PHPUnit_Framework_TestCase
             $this->builder->compile());
     }
 
+    public function test_flex_cut_macro_is_equivalent_to_change_pen()
+    {
+        $otherBuilder = new SvgBuilder();
+        $this->assertEquals(
+            $this->builder->flexCut()->plot(100, 200),
+            $otherBuilder->changePen(6)->plot(100, 200));
+    }
+
 }
