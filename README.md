@@ -43,7 +43,7 @@ $builder->penUp()
         ->penUp()
         ->cutOff();
 
-return $builder->compileDmpl();
+return $builder->compile();
 ```
 
 Sending the generated DM/PL instructions to your plotter through USB can be done like so:
@@ -63,7 +63,7 @@ $builder->flipAxes()
 $builder->regularCut()
 $builder->changePen(int $pen)
 $builder->plot(int $x, int $y)
-$builder->compileDmpl(): string
+$builder->compile(): string
 $builder->setMeasuringUnit($unit)
 $builder->velocity(int $velocity)
 $builder->pressure(int $gramPressure)
